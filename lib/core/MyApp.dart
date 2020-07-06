@@ -11,33 +11,37 @@ import 'package:keco/screens/LoginScreen.dart';
 import 'package:keco/screens/MeetingScreen.dart';
 import 'package:keco/screens/OrderScreen.dart';
 import 'package:keco/screens/ProductScreen.dart';
+import 'package:keco/screens/TicketScreen.dart';
 import 'package:keco/screens/UserScreen.dart';
-import 'package:keco/utils/Config.dart';
 
 class MyApp extends StatelessWidget {
-  final materialApp = MaterialApp(
-    title: Config.appName,
-    theme: Config.themeData(),
-    home: LoginScreen(),
 
-    //routes
-    routes: <String, WidgetBuilder>{
-      Config.homeRoute: (BuildContext context) => HomeScreen(),
-      Config.loginRoute: (BuildContext context) => LoginScreen(),
-      Config.articleRoute: (BuildContext context) => ArticleScreen(),
-      Config.contactRoute: (BuildContext context) => ContactScreen(),
-      Config.contractRoute: (BuildContext context) => ContractScreen(),
-      Config.meetingRoute: (BuildContext context) => MeetingScreen(),
-      Config.orderRoute: (BuildContext context) => OrderScreen(),
-      Config.productRoute: (BuildContext context) => ProductScreen(),
-      Config.userRoute: (BuildContext context) => UserScreen(),
-    },
-  );
+  //routes
+  final routes = <String, WidgetBuilder>{
+  HomeScreen.tag: (context) => HomeScreen(),
+  LoginScreen.tag: (context) => LoginScreen(),
+  ArticleScreen.tag: (context) => ArticleScreen(),
+  ContactScreen.tag: (context) => ContactScreen(),
+  ContractScreen.tag: (context) => ContractScreen(),
+  MeetingScreen.tag: (context) => MeetingScreen(),
+  OrderScreen.tag: (context) => OrderScreen(),
+  ProductScreen.tag: (context) => ProductScreen(),
+  UserScreen.tag: (context) => UserScreen(),
+  TicketScreen.tag: (context) => TicketScreen(),
+  };
 
   @override
   Widget build(BuildContext context) {
-    return materialApp;
+    return MaterialApp(
+      title: 'Kodeversitas',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.lightBlue,
+        fontFamily: 'Nunito',
+      ),
+      home: LoginScreen(),
+      routes: routes,
+    );
   }
-}
 
-class LoginRoute {}
+}

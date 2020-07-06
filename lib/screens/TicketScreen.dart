@@ -5,15 +5,15 @@
 import 'package:flutter/material.dart';
 import 'package:keco/utils/Config.dart';
 
-class ContractScreen extends StatelessWidget {
-  static String tag = 'ContractScreen';
+class TicketScreen extends StatelessWidget {
+  static String tag = 'TicketScreen';
 
   @override
   Widget build(BuildContext context) {
     final welcome = Padding(
       padding: EdgeInsets.all(8.0),
       child: Text(
-        Config.contract,
+        Config.ticket,
         style: TextStyle(fontSize: 28.0, color: Colors.blue),
       ),
     );
@@ -30,6 +30,5 @@ class ContractScreen extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

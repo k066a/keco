@@ -12,24 +12,37 @@ class Config {
   static const String
 
       //strings
-      appName = "keco",
+      appName = "kEco",
 
-      //fonts
+      home = "Home",
+      login = "Login",
+      user = "Users",
+      contact = "Contacts",
+      meeting = "Meetings",
+      order = "Orders",
+      product = "Products",
+      article = "Articles",
+      contract = "Contracts",
+      ticket = "Tickets",
+      logout = "Logout",
+
+      loginTitle = 'kEco Login Screen',
+      initMail = 'k066a@mail.de',
+      email = 'E-Mail Adresse',
+      initPassword = 'password',
+      password = 'Passwort',
+      forgetPW = 'Forgot password?',
+      noUser = 'Username not exists',
+      noMatch = 'Password does not match',
+      match = 'Login succeded',
+      wtf = 'Unknown Login Error',
+
+  //fonts
       // ...
 
       //images
-      // ...
-
-      //routes
-      homeRoute = "/home",
-      loginRoute = "/login",
-      userRoute = "/user",
-      contactRoute = "/contact",
-      meetingRoute = "/meeting",
-      orderRoute = "/order",
-      productRoute = "/product",
-      articleRoute = "/article",
-      contractRoute = "/contract";
+      logoPNG = "assets/images/logo.png",
+      logoTransPNG = "assets/images/logoTrans.png";
 
   //design
   static ThemeData themeData() {
