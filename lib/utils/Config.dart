@@ -27,15 +27,21 @@ class Config {
       logout = "Logout",
 
       loginTitle = 'kEco Login Screen',
+
+      // Login
       initMail = 'k066a@mail.de',
       email = 'E-Mail Adresse',
       initPassword = 'password',
       password = 'Passwort',
       forgetPW = 'Forgot password?',
-      noUser = 'Username not exists',
-      noMatch = 'Password does not match',
-      match = 'Login succeded',
-      wtf = 'Unknown Login Error',
+      noMail = 'Mail not exists',
+      mailExist = 'mail already exists',
+      noMatch = 'Mail and Password not matching',
+      match = 'Password not allowed to match mail',
+      loginError = 'Unknown Login Error',
+      signError = 'Unknown Login Error',
+      allGood = 'All Good',
+
 
   //fonts
       // ...

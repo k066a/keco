@@ -3,6 +3,7 @@
  */
 
 class User {
+
   int _id;
   String _name;
   String _password;
@@ -40,4 +41,5 @@ class User {
     map["user_password"] = _password;
     return map;
   }
+
 }

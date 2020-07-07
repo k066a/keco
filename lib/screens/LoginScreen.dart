@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.symmetric(vertical: 4.0),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
@@ -71,6 +71,21 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.all(12),
         color: Colors.lightBlueAccent,
         child: Text('Log In', style: TextStyle(color: Colors.white)),
+      ),
+    );
+
+    final signButton = Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.0),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        onPressed: () {
+          _signMsg(_signUser(mailController.text, passwordController.text));
+        },
+        padding: EdgeInsets.all(12),
+        color: Colors.lightBlueAccent,
+        child: Text('Sign In', style: TextStyle(color: Colors.white)),
       ),
     );
 
@@ -96,6 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
             password,
             SizedBox(height: 24.0),
             loginButton,
+            signButton,
+            SizedBox(height: 8.0),
             forgotLabel
           ],
         ),
@@ -106,24 +123,47 @@ class _LoginScreenState extends State<LoginScreen> {
   String _loginMsg(int code) {
     if(code == 0) {
       Navigator.of(context).pushNamed(HomeScreen.tag);
-      return Config.match;
+      return Config.allGood;
     } else if (code == 1) {
-      return Config.noUser;
+      return Config.noMail;
     } else if (code == 2) {
       return Config.noMatch;
     } else {
-      return Config.wtf;
+      return Config.loginError;
+    }
+  }
+
+  String _signMsg(int code) {
+    if(code == 0) {
+      Navigator.of(context).pushNamed(HomeScreen.tag);
+      return Config.allGood;
+    } else if (code == 1) {
+      return Config.mailExist;
+    } else if (code == 2) {
+      return Config.match;
+    } else {
+      return Config.signError;
     }
   }
 
   int _loginUser(String mail, String pw) {
-      if (!mockUsers.containsKey(mail)) {
-        return 1;
-      }
-      if (mockUsers[mail] != pw) {
-        return 2;
-      }
-      return 0;
+    if (!mockUsers.containsKey(mail)) {
+      return 1;   // no such mail found
     }
+    if (mockUsers[mail] != pw) {
+      return 2;   // username and password not matching
+    }
+    return 0;     // match found, all good
+  }
+
+  int _signUser(String mail, String pw) {
+    if (mockUsers.containsKey(mail)) {
+      return 1;   // user already exists
+    }
+    if (mail == pw) {
+      return 2;   // mail and password not allowed to match
+    }
+    return 0;     // user created, all good
+  }
 
 }
